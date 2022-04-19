@@ -23,7 +23,5 @@ class MainActivity : AppCompatActivity(){
         findViewById<View>(R.id.bt_demo).setOnClickListener {
             Log.d(TAG, "onCreate: 进来了")
         }
-
     }
-
 }
