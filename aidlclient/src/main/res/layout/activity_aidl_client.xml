@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".AIDLClientActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <EditText
+            android:id="@+id/et_num1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@color/colorgray"
+            android:layout_weight="3"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="+"
+            android:gravity="center"
+            android:layout_weight="1"
+            />
+        <EditText
+            android:id="@+id/et_num2"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@color/colorgray"
+            android:layout_weight="3"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="="
+            android:gravity="center"
+            android:layout_weight="1"
+            />
+        <TextView
+            android:id="@+id/tv_results"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:background="@color/colorgray"
+            android:layout_weight="3"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_compute"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorgray"
+        android:text="AIDL远程计算"
+        android:layout_marginTop="20dp"
+        />
+
+</LinearLayout>
