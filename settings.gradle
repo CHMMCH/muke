@@ -2,3 +2,4 @@ include ':aidlclient'
 include ':aidlservice'
 include ':app'
 rootProject.name = "muke"
+include ':Mlibrary'
