@@ -19,19 +19,18 @@ public class MConsolePrinter implements MLogPrinter{
         int len = printString.length();
         int countOfSub = len/MAX_LEN;//得到行数
 
-        if (countOfSub>0){
+        if (countOfSub>0) {
             int index = 0;
 
-            for(int i=0; i<countOfSub; i++){
-                Log.println(level,tag,printString.substring(index,index+MAX_LEN));
-                index+=MAX_LEN;
+            for (int i = 0; i < countOfSub; i++) {
+                Log.println(level, tag, printString.substring(index, index + MAX_LEN));
+                index += MAX_LEN;
             }
 
             //无法整除的剩余部分
-            if (index != len){
-                Log.println(level,tag,printString.substring(index,len));
+            if (index != len) {
+                Log.println(level, tag, printString.substring(index, len));
             }
-
         }else{
             Log.println(level,tag,printString);
         }

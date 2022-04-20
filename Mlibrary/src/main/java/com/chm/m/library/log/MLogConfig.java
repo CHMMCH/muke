@@ -17,7 +17,7 @@ public abstract class MLogConfig {
     }
 
     public String getGlobalTag(){
-        return "MLog";
+        return "MLog-chmt";
     }
 
     public boolean enable(){

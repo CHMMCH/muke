@@ -1,8 +1,8 @@
 package com.chm.muke.demo
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.chm.m.library.log.MLog
 import com.chm.m.library.log.MLogConfig
 import com.chm.m.library.log.MLogType
@@ -30,9 +30,9 @@ class MLogDemoActivity : AppCompatActivity() {
                 return 0
             }
 
-        },MLogType.E,"-----","5566")
+        },MLogType.V,"chmt","8888")
 
-        MLog.a("9900")
+        MLog.v(Math.min(6666, 9999))
     }
 
 }

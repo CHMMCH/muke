@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
     }
 
     override fun onClick(p0: View?) {
-        MLog.vt("进来了","chmt")
         when(p0!!.id){
             R.id.bt_demo ->{
                 startActivity(Intent(this,MLogDemoActivity::class.java))

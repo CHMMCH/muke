@@ -14,6 +14,14 @@ import java.util.List;
  */
 public class MLog {
 
+    private static final String M_LOG_PACKAGE;
+
+    static{
+        //获取包名
+        String className = MLog.class.getName();
+        //获取包名前缀
+        M_LOG_PACKAGE = className.substring(0,className.lastIndexOf('.')+1);
+    }
 
     public static void v(Object... contents){
         log(MLogType.V,contents);
@@ -85,7 +93,7 @@ public class MLog {
 
         //判断是否添加堆栈信息
         if (config.stackTreceDepth() > 0){
-            String stackTreace = MLogConfig.M_STACK_TRACE_FORMATTER.format(new Throwable().getStackTrace());
+            String stackTreace = MLogConfig.M_STACK_TRACE_FORMATTER.format(MStackTraceUtil.getCroppedRealStackTrack(new Throwable().getStackTrace(),M_LOG_PACKAGE, config.stackTreceDepth()));
             sb.append(stackTreace).append("\n");
         }
 
