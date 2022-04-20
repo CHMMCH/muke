@@ -4,6 +4,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @Desc : log打印类
  * @Author : chenhongmou
@@ -74,13 +77,39 @@ public class MLog {
         }
 
         StringBuilder sb = new StringBuilder();
-        String body = parseBody(contents);
+        //判断是否要添加线程
+        if (config.includeTread()){
+            String threadInfo = MLogConfig.M_THREAD_FORMATTER.format(Thread.currentThread());
+            sb.append(threadInfo).append("\n");
+        }
+
+        //判断是否添加堆栈信息
+        if (config.stackTreceDepth() > 0){
+            String stackTreace = MLogConfig.M_STACK_TRACE_FORMATTER.format(new Throwable().getStackTrace());
+            sb.append(stackTreace).append("\n");
+        }
+
+        String body = parseBody(contents,config);
         sb.append(body);
-        Log.println(type,tag,body);
+
+        //调用打印器打印
+        List<MLogPrinter>printers = config.printers() != null ? Arrays.asList(config.printers()) : MLogManager.getInstance().getPrinters();
+        if (printers==null){
+            return ;
+        }
+        for (MLogPrinter printer:printers){
+            printer.print(config,type,tag,sb.toString());
+        }
+//        Log.println(type,tag,body);
 
     }
 
-    private static String parseBody(@NonNull Object[] contents){
+    private static String parseBody(@NonNull Object[] contents,@NonNull MLogConfig config){
+
+        if (config.injectJsonParser()!= null){
+            return config.injectJsonParser().toJsonn(contents);
+        }
+
         StringBuffer sb = new StringBuffer();
         for(Object o:contents){
             sb.append(o.toString()).append(";");

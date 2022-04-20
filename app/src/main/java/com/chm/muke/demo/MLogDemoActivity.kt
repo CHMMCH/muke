@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.chm.m.library.log.MLog
+import com.chm.m.library.log.MLogConfig
+import com.chm.m.library.log.MLogType
 import com.chm.muke.R
 
 class MLogDemoActivity : AppCompatActivity() {
@@ -18,6 +20,18 @@ class MLogDemoActivity : AppCompatActivity() {
     }
 
     private fun printLog(){
+
+        MLog.log(object : MLogConfig(){
+            override fun includeTread(): Boolean {
+                return true
+            }
+
+            override fun stackTreceDepth(): Int {
+                return 0
+            }
+
+        },MLogType.E,"-----","5566")
+
         MLog.a("9900")
     }
 

@@ -1,8 +1,10 @@
 package com.chm.muke
 
 import android.app.Application
+import com.chm.m.library.log.MConsolePrinter
 import com.chm.m.library.log.MLogConfig
 import com.chm.m.library.log.MLogManager
+import com.google.gson.Gson
 
 /**
  * @Desc :
@@ -15,6 +17,11 @@ class MAppliction : Application() {
         super.onCreate()
         MLogManager.init(object : MLogConfig(){
 
+            override fun injectJsonParser(): JsonPareser {
+                return JsonPareser { src -> Gson().toJson(src) }
+
+            }
+
             override fun getGlobalTag(): String {
                 return "Application-chmt-"
             }
@@ -23,7 +30,7 @@ class MAppliction : Application() {
                 return true
             }
 
-        })
+        },MConsolePrinter())
     }
 
 }
