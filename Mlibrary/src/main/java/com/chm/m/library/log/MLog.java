@@ -98,7 +98,11 @@ public class MLog {
         }
 
         String body = parseBody(contents,config);
+        if (body != null) {//替换转义字符\
+            body = body.replace("\\\"", "\"");
+        }
         sb.append(body);
+
 
         //调用打印器打印
         List<MLogPrinter>printers = config.printers() != null ? Arrays.asList(config.printers()) : MLogManager.getInstance().getPrinters();

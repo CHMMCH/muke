@@ -1,7 +1,7 @@
 package com.chm.m.library.log;
 
 /**
- * @Desc : 堆栈信息可视化器
+ * @Desc : 堆栈信息格式化器
  * @Author: chenhongmou
  * @Time: 2022/4/20 17:17
  */
