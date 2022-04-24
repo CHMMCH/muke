@@ -9,7 +9,7 @@ public class MStackTraceUtil {
 
 
     /**
-     * 先忽略包名,再裁剪指定长度,最终获得最简堆栈信息
+     * 先忽略包名之外的多余堆栈信息,再裁剪指定长度,最终返回最简堆栈信息
      * @param stackTrace
      * @param igonrePackage
      * @param maxDepth

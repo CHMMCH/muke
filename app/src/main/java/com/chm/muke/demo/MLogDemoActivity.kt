@@ -9,35 +9,37 @@ import com.chm.muke.R
 class MLogDemoActivity : AppCompatActivity() {
 
     var viewPrinter: MViewPrinter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mlog_demo)
 
-        viewPrinter = MViewPrinter(this)
-
-        var bt_log = findViewById<View>(R.id.bt_log)
+        val bt_log = findViewById<View>(R.id.bt_log)
         bt_log.setOnClickListener { printLog()}
 
-        viewPrinter!!.viewProvider.showFloatingView()
 
+        //可视化log初始化
+        viewPrinter = MViewPrinter(this)
+        viewPrinter!!.viewProvider.showFloatingView()
+        MLogManager.getInstance().addPrinter(viewPrinter)
     }
 
     private fun printLog(){
-        //添加可视化打印器
-        MLogManager.getInstance().addPrinter(viewPrinter)
 
         MLog.log(object : MLogConfig(){
             override fun includeTread(): Boolean {
                 return true
             }
 
-            override fun stackTreceDepth(): Int {
+            override fun stackTraceDepth(): Int {
                 return 0
             }
 
         },MLogType.E,"chmt","8888")
 
-        MLog.a(Math.min(6666, 9999))
+        MLog.a("测试log")
+
+        MLog.at("测试TAG","测试log")
 
     }
 

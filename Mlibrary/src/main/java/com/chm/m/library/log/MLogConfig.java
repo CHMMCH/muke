@@ -17,7 +17,7 @@ public abstract class MLogConfig {
     }
 
     public String getGlobalTag(){
-        return "MLog-chmt";
+        return "MLog-chmT";
     }
 
     public boolean enable(){
@@ -30,9 +30,9 @@ public abstract class MLogConfig {
         return false;
     }
 
-    //堆栈信息深度
-    public int stackTreceDepth(){
-        return 5;
+    //堆栈信息深度 默认最多6行
+    public int stackTraceDepth(){
+        return 6;
     }
 
     public MLogPrinter[] printers(){

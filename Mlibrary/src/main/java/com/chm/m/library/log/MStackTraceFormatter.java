@@ -9,7 +9,7 @@ public class MStackTraceFormatter implements MLogFormatter<StackTraceElement[]>{
 
     @Override
     public String format(StackTraceElement[] stackTrace) {
-        StringBuffer sb = new StringBuffer(128);
+        StringBuilder sb = new StringBuilder(128);
         if (stackTrace == null || stackTrace.length==0){
             return null;
         }else if (stackTrace.length == 1){
@@ -18,7 +18,7 @@ public class MStackTraceFormatter implements MLogFormatter<StackTraceElement[]>{
             for (int i=0,len = stackTrace.length;i < len; i++){
                 //第一个
                 if (i == 0){
-                    sb.append("stackTrace: \n");
+                    sb.append("堆栈跟踪: \n");
                 }
                 //中间和最后一个
                 if (i!=len-1){

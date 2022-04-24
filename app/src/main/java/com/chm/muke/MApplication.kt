@@ -11,7 +11,7 @@ import com.google.gson.Gson
  * @Author : chenhongmou
  * @Time : 2022/4/19 23:25
  */
-class MAppliction : Application() {
+class MApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -23,10 +23,14 @@ class MAppliction : Application() {
             }
 
             override fun getGlobalTag(): String {
-                return "Application-chmt-"
+                return "MLog-chmT"
             }
 
             override fun enable(): Boolean {
+                return true
+            }
+
+            override fun includeTread(): Boolean {
                 return true
             }
 

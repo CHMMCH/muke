@@ -85,26 +85,27 @@ public class MLog {
         }
 
         StringBuilder sb = new StringBuilder();
+
         //判断是否要添加线程
         if (config.includeTread()){
             String threadInfo = MLogConfig.M_THREAD_FORMATTER.format(Thread.currentThread());
-            sb.append(threadInfo).append("\n");
+            sb.append("所在线程：").append(threadInfo).append("\n");
         }
 
         //判断是否添加堆栈信息
-        if (config.stackTreceDepth() > 0){
-            String stackTreace = MLogConfig.M_STACK_TRACE_FORMATTER.format(MStackTraceUtil.getCroppedRealStackTrack(new Throwable().getStackTrace(),M_LOG_PACKAGE, config.stackTreceDepth()));
+        if (config.stackTraceDepth() > 0){
+            String stackTreace = MLogConfig.M_STACK_TRACE_FORMATTER.format(MStackTraceUtil.getCroppedRealStackTrack(new Throwable().getStackTrace(),M_LOG_PACKAGE, config.stackTraceDepth()));
             sb.append(stackTreace).append("\n");
         }
 
+        //写入log内容
         String body = parseBody(contents,config);
         if (body != null) {//替换转义字符\
             body = body.replace("\\\"", "\"");
         }
         sb.append(body);
 
-
-        //调用打印器打印
+        //调用所有打印器打印
         List<MLogPrinter>printers = config.printers() != null ? Arrays.asList(config.printers()) : MLogManager.getInstance().getPrinters();
         if (printers==null){
             return ;
@@ -112,17 +113,20 @@ public class MLog {
         for (MLogPrinter printer:printers){
             printer.print(config,type,tag,sb.toString());
         }
-//        Log.println(type,tag,body);
 
     }
 
     private static String parseBody(@NonNull Object[] contents,@NonNull MLogConfig config){
 
         if (config.injectJsonParser()!= null){
+            //如果只有一个数据非数组，且为String的情况下，直接返回，不进行序列化
+            if (contents.length == 1 && contents[0] instanceof String){
+                return (String) contents[0];
+            }
             return config.injectJsonParser().toJsonn(contents);
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for(Object o:contents){
             sb.append(o.toString()).append(";");
         }
@@ -132,7 +136,5 @@ public class MLog {
         }
         return sb.toString();
     }
-
-
 
 }
