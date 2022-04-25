@@ -16,11 +16,12 @@ import androidx.annotation.NonNull;
  */
 public class MDisplayUtil {
 
+    //dp转px
     public static int dp2px(float dp, Resources resources) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.getDisplayMetrics());
     }
 
-
+    //获取屏幕宽度
     public static int getDisplayWidthInPx(@NonNull Context context) {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         if (wm != null) {
@@ -33,6 +34,7 @@ public class MDisplayUtil {
 
     }
 
+    //获取屏幕高度
     public static int getDisplayHeightInPx(@NonNull Context context) {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         if (wm != null) {
@@ -43,6 +45,5 @@ public class MDisplayUtil {
         }
         return 0;
     }
-
 
 }
