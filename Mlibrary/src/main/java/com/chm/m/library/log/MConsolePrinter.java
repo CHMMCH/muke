@@ -22,6 +22,7 @@ public class MConsolePrinter implements MLogPrinter{
         if (countOfSub>0) {
             int index = 0;
 
+            //遍历输出每一次 一次MAX_LEN个字符
             for (int i = 0; i < countOfSub; i++) {
                 Log.println(level, tag, printString.substring(index, index + MAX_LEN));
                 index += MAX_LEN;
@@ -31,7 +32,9 @@ public class MConsolePrinter implements MLogPrinter{
             if (index != len) {
                 Log.println(level, tag, printString.substring(index, len));
             }
+
         }else{
+            //行数不足1，直接全部输出
             Log.println(level,tag,printString);
         }
     }

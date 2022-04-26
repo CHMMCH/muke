@@ -26,20 +26,22 @@ class MLogDemoActivity : AppCompatActivity() {
 
     private fun printLog(){
 
-        MLog.log(object : MLogConfig(){
-            override fun includeTread(): Boolean {
-                return true
-            }
+//        MLog.log(object : MLogConfig(){
+//            override fun includeTread(): Boolean {
+//                return true
+//            }
+//
+//            override fun stackTraceDepth(): Int {
+//                return 0
+//            }
+//
+//        },MLogType.E,"chmt","8888")
 
-            override fun stackTraceDepth(): Int {
-                return 0
-            }
+        var arr1 = arrayOf("测速1","88888","6666666","222222222222","98898989898")
 
-        },MLogType.E,"chmt","8888")
+        MLog.a("测试log1","sss","sss","sada",arr1)
 
-        MLog.a("测试log")
-
-        MLog.at("测试TAG","测试log")
+//        MLog.at("测试TAG","测试log2")
 
     }
 

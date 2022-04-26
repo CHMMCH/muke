@@ -86,10 +86,12 @@ public class MLog {
 
         StringBuilder sb = new StringBuilder();
 
+        sb.append(" \n");
+
         //判断是否要添加线程
         if (config.includeTread()){
             String threadInfo = MLogConfig.M_THREAD_FORMATTER.format(Thread.currentThread());
-            sb.append("所在线程：").append(threadInfo).append("\n");
+            sb.append("所在线程: ").append(threadInfo).append("\n");
         }
 
         //判断是否添加堆栈信息

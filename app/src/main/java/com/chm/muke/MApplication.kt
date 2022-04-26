@@ -34,6 +34,11 @@ class MApplication : Application() {
                 return true
             }
 
+            override fun stackTraceDepth(): Int {
+                return 6
+            }
+
+
         },MConsolePrinter())
     }
 

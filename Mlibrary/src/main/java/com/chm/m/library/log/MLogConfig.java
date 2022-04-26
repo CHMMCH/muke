@@ -7,7 +7,8 @@ package com.chm.m.library.log;
  */
 public abstract class MLogConfig {
 
-    static int MAX_LEN = 512;
+    //这个是打印字符上限，如果输出log信息过多将建议调高
+    static int MAX_LEN = 1024;
     static MThreadFormatter M_THREAD_FORMATTER = new MThreadFormatter();
     static MStackTraceFormatter M_STACK_TRACE_FORMATTER = new MStackTraceFormatter();
 
